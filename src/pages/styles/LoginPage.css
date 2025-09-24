@@ -1,0 +1,69 @@
+/* Resetear todo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: fixed; /* Esto fuerza que ocupe toda la pantalla */
+    top: 0;
+    left: 0;
+}
+
+.login-right-side {
+    width: 60%;
+    background: linear-gradient(135deg, #1e3a8a, #7c3aed, #3730a3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-left-side {
+    width: 40%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 400px;
+    height: 280px;
+    object-fit: contain;
+}
+
+/* --- Responsive para Móviles y Tablets --- */
+@media (max-width: 768px) {
+    .login-container {
+        /*
+        * Para pantallas pequeñas, cambiamos la dirección de los elementos.
+        * El logo y el formulario se apilan uno sobre el otro.
+        */
+        flex-direction: column;
+        justify-content: flex-start; /* Alinea el contenido al inicio de la columna */
+    }
+
+    .login-left-side, .login-right-side {
+        width: 100%; /* Cada sección ocupa todo el ancho de la pantalla */
+        height: 50%; /* Cada sección ocupa la mitad de la altura */
+        padding: 20px; /* Añade un poco de padding para que el contenido no esté pegado a los bordes */
+    }
+
+    .login-right-side {
+        order: 1; /* Esto hace que la columna derecha (el logo) se mueva arriba */
+    }
+    
+    .login-left-side {
+        order: 2; /* Esto hace que la columna izquierda (el formulario) se mueva abajo */
+    }
+
+    /* Ajustes para el logo */
+    .logo {
+        width: 200px; /* Reduce el tamaño del logo */
+        height: auto;
+    }
+}

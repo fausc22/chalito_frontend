@@ -1,0 +1,211 @@
+/* NavBar.css */
+.header {
+  background: linear-gradient(135deg, #1e3a8a, #7c3aed, #3730a3);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #475569;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; /* Ocupa todo el ancho */
+  height: 80px; /* Altura fija */
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.header a {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0; /* No se comprime */
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.header a:hover {
+  transform: translateY(-2px);
+}
+
+.header img {
+  height: 60px;
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  transition: filter 0.3s ease;
+}
+
+.header img:hover {
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+/* Menú derecha */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0; /* No se comprime */
+  margin-left: auto;
+}
+
+.nav-link, .nav-user {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-shadow: 
+    0 8px 25px rgba(124, 58, 237, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-user:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-shadow: 
+    0 8px 25px rgba(124, 58, 237, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón hamburguesa - oculto por defecto */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  position: relative;
+}
+
+/* Líneas del hamburguesa */
+.hamburger-line {
+  width: 23px;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff, #e0e7ff);
+  margin: 3px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Animación cuando está activo */
+.hamburger-line.active:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background: linear-gradient(90deg, #fb5624, #fb5624);
+}
+
+.hamburger-line.active:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.hamburger-line.active:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background: linear-gradient(90deg, #fb5624, #fb5624);
+}
+
+/* Overlay para cerrar menú */
+.menu-overlay {
+  display: none;
+}
+
+/* Responsive - Móviles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row; /* Mantener fila en móvil */
+    height: 80px; /* Mantener altura fija */
+    padding: 1rem;
+    gap: 0;
+  }
+
+  .header a {
+    order: 0;
+    flex: 1; /* Logo toma espacio disponible */
+  }
+  
+  /* Mostrar botón hamburguesa en móvil */
+  .hamburger-btn {
+    display: flex;
+    order: 2;
+  }
+  
+  /* Ocultar navbar por defecto en móvil */
+  .navbar {
+    position: fixed;
+    top: 80px; /* Debajo del header */
+    right: -100%; /* Oculto a la derecha */
+    width: auto; /* Ancho automático */
+    min-width: 180px; /* Ancho mínimo */
+    height: auto; /* Altura automática */
+    background-color: #3f3f3f;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    border-left: 1px solid #475569;
+    border-bottom: 1px solid #475569;
+    border-bottom-left-radius: 8px;
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Cuando el menú está abierto */
+  .navbar-mobile-open {
+    right: 0; /* Desliza desde la derecha */
+  }
+  
+  .navbar-right {
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0;
+    margin: 0;
+    padding: 0.5rem 0; /* Menos padding vertical */
+  }
+  
+  .navbar-right .nav-link, 
+  .navbar-right .nav-user {
+    width: 100%;
+    padding: 0.75rem 1.5rem; /* Padding más compacto */
+    border-radius: 0;
+    border-bottom: 1px solid #475569;
+    text-align: center !important; /* Forzar centrado */
+    font-size: 0.9rem; /* Texto ligeramente más pequeño */
+    display: block; /* Asegurar que sea block */
+    box-sizing: border-box; /* Incluir padding en el ancho */
+  }
+  
+  .navbar-right .nav-link:last-child, 
+  .navbar-right .nav-user:last-child {
+    border-bottom: none;
+  }
+
+  /* Overlay para cerrar menú */
+  .menu-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+}

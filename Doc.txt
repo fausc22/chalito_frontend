@@ -1,0 +1,34 @@
+Prueba-01/
+├── node_modules/
+├── public/
+├── src/
+│   ├── assets/
+|   ├── components/ 
+│   │   ├── Footer.jsx
+│   │   ├── LoginForm.jsx
+│   │   ├── Modal.jsx
+│   │   ├── ModuleCard.jsx
+|   |   ├── NavBar.jsx
+│   │   ├── Toast.jsx
+|   |   └── ProtectedRoute.jsx
+|   |
+│   ├── hooks/
+│   │   └── useUsers.js
+│   ├── pages/
+│   │   ├── DashBoardPage.jsx
+│   |   ├── LoginPage.jsx
+|   |   ├── PedidosPage.jsx
+|   |   └── VentasPage.jsx
+│   │   
+│   ├── services/
+│   │   └── authService.js
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx 
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js

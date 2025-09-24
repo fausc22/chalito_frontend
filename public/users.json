@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "usuario": "facuulv",
+    "password": "1234"
+  },
+  {
+    "id": 2,
+    "usuario": "usuario@ejemplo.com",
+    "password": "password"
+  },
+  {
+    "id": 3,
+    "usuario": "test@test.com",
+    "password": "test123"
+  }
+]

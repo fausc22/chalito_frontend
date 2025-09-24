@@ -1,0 +1,7 @@
+.footer {
+  background-color: #315e92; /* O el nuevo azul que elegiste */
+  color: white;
+  text-align: center;
+  padding: 1rem 0; /* Padding arriba y abajo, cero a los lados */
+  width: 100%;
+}
