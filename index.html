@@ -1,10 +1,80 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="shortcut icon" href="./src/assets/cactus-chalito.png" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>El Chalito</title>
+    
+    <!-- ✅ VIEWPORT MEJORADO PARA MÓVILES -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, viewport-fit=cover" />
+    
+    <!-- ✅ META TAGS PARA MEJORES TOUCH INTERACTIONS -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#315e92">
+    
+    <!-- ✅ PREVENIR ZOOM EN INPUTS EN iOS -->
+    <meta name="format-detection" content="telephone=no">
+    
+    <title>El Chalito - Sistema Gastronómico</title>
+    
+    <!-- ✅ CSS RESET BÁSICO PARA MÓVILES -->
+    <style>
+      /* ✅ Reset básico para evitar problemas en móviles */
+      * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* ✅ Permitir selección en inputs y botones */
+      input, textarea, button, select {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+      }
+      
+      /* ✅ Body para móviles */
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height */
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+        position: fixed;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        color: #1f2937; /* ✅ COLOR BASE DEL TEXTO */
+        background-color: #f8fafc;
+      }
+      
+      /* ✅ Root para móviles */
+      #root {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        color: #1f2937; /* ✅ HEREDAR COLOR */
+      }
+      
+      /* ✅ ESTILOS ESPECÍFICOS PARA INPUTS */
+      input, textarea, select {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
+        color: #1f2937 !important;
+        -webkit-text-fill-color: #1f2937 !important;
+      }
+      
+      /* ✅ Mejorar performance en móviles */
+      * {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

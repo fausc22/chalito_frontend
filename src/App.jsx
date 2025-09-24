@@ -1,50 +1,24 @@
-import { useState } from 'react'
-import { LoginPage } from "./pages/LoginPage.jsx"
-import { DashBoardPage } from './pages/DashBoardPage.jsx'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { ProtectedRoute } from './components/ProtectedRoute.jsx'
-import { PedidosPage } from './pages/PedidosPage.jsx'
-import { VentasPage } from './pages/VentasPage.jsx'
-import { ArticulosPage } from './pages/ArticulosPage.jsx'
+// src/App.jsx
+import { BrowserRouter } from 'react-router-dom';
+import { NotificationProvider } from './contexts/NotificationContext';
+import { AuthProvider } from './contexts/AuthContext';
+import AppRoutes from './routes/AppRoutes';
+import Toaster from './components/common/Toaster';
+import './App.css';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [usuario, setUsuario] = useState(null);
-
-  const handleLoginSuccess = (user) => {
-      setIsLoggedIn(true)
-      setUsuario(user)
-  }
-
-
   return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Navigate to="/login" />} />
-                <Route path="/login" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
-                <Route path="/dashboard" element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <DashBoardPage usuario={usuario} />
-                    </ProtectedRoute>
-                } />
-                <Route path="/pedidos" element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <PedidosPage />
-                    </ProtectedRoute>
-                } />
-                <Route path="/ventas" element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <VentasPage />
-                    </ProtectedRoute>
-                } />
-                <Route path="/articulos" element={
-                    <ProtectedRoute isLoggedIn={isLoggedIn}>
-                        <ArticulosPage />
-                    </ProtectedRoute>
-                } />
-            </Routes>
-        </BrowserRouter>
-    )
+    <BrowserRouter>
+      <NotificationProvider>
+        <AuthProvider>
+          <div className="App">
+            <AppRoutes />
+            <Toaster />
+          </div>
+        </AuthProvider>
+      </NotificationProvider>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

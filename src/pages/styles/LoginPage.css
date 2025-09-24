@@ -1,4 +1,6 @@
-/* Resetear todo */
+/* src/pages/styles/LoginPage.css - MEJORADO PARA MÓVILES */
+
+/* ✅ RESETEAR TODO PARA EVITAR PROBLEMAS */
 * {
     margin: 0;
     padding: 0;
@@ -9,9 +11,11 @@
     display: flex;
     height: 100vh;
     width: 100vw;
-    position: fixed; /* Esto fuerza que ocupe toda la pantalla */
+    position: fixed; /* ✅ Fuerza pantalla completa */
     top: 0;
     left: 0;
+    /* ✅ MEJORAR SCROLL EN MÓVILES */
+    overflow: hidden; /* ✅ Evitar scroll en el container principal */
 }
 
 .login-right-side {
@@ -20,6 +24,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    /* ✅ EVITAR PROBLEMAS DE TOUCH */
+    touch-action: none;
 }
 
 .login-left-side {
@@ -28,15 +35,65 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* ✅ PERMITIR SCROLL SOLO AQUÍ */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem;
 }
 
 .logo {
-    width: 400px;
-    height: 280px;
+    width: 300px;
+    height: auto;
+    max-width: 90%;
     object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
+    transition: transform 0.3s ease;
 }
 
-/* --- Responsive para Móviles y Tablets --- */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.welcome-text h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-text p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ RESPONSIVE PARA TABLETS */
+@media (max-width: 1024px) {
+    .logo {
+        width: 250px;
+    }
+    
+    .welcome-text h1 {
+        font-size: 2rem;
+    }
+    
+    .welcome-text p {
+        font-size: 1rem;
+    }
+}
+
+/* ✅ RESPONSIVE PARA MÓVILES Y TABLETS */
 @media (max-width: 768px) {
     .login-container {
         /*
@@ -44,26 +101,129 @@
         * El logo y el formulario se apilan uno sobre el otro.
         */
         flex-direction: column;
-        justify-content: flex-start; /* Alinea el contenido al inicio de la columna */
+        overflow: auto; /* ✅ Permitir scroll en móviles */
+        -webkit-overflow-scrolling: touch;
+        position: fixed;
+        height: 100vh;
+        height: 100dvh; /* ✅ Usar dynamic viewport height si está disponible */
     }
 
     .login-left-side, .login-right-side {
-        width: 100%; /* Cada sección ocupa todo el ancho de la pantalla */
-        height: 50%; /* Cada sección ocupa la mitad de la altura */
-        padding: 20px; /* Añade un poco de padding para que el contenido no esté pegado a los bordes */
+        width: 100%; /* ✅ Cada sección ocupa todo el ancho de la pantalla */
+        overflow: visible; /* ✅ Permitir contenido visible */
+        position: relative;
     }
 
     .login-right-side {
-        order: 1; /* Esto hace que la columna derecha (el logo) se mueva arriba */
+        order: 1; /* ✅ Logo arriba */
+        height: 35vh; /* ✅ Logo ocupa menos espacio en móviles */
+        min-height: 200px;
+        flex-shrink: 0; /* ✅ No se comprime */
+        padding: 1rem;
     }
     
     .login-left-side {
-        order: 2; /* Esto hace que la columna izquierda (el formulario) se mueva abajo */
+        order: 2; /* ✅ Formulario abajo */
+        flex: 1; /* ✅ Toma el espacio restante */
+        min-height: 65vh;
+        overflow-y: auto; /* ✅ Scroll solo en el formulario */
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
     }
 
-    /* Ajustes para el logo */
+    .logo-container {
+        padding: 1rem;
+        gap: 1rem;
+        height: 100%;
+        justify-content: center;
+    }
+
+    /* ✅ Ajustes para el logo en móviles */
     .logo {
-        width: 200px; /* Reduce el tamaño del logo */
+        width: 150px;
         height: auto;
+    }
+    
+    .welcome-text h1 {
+        font-size: 1.5rem;
+    }
+    
+    .welcome-text p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ✅ MÓVILES MUY PEQUEÑOS */
+@media (max-width: 480px) {
+    .login-right-side {
+        height: 30vh;
+        min-height: 180px;
+        padding: 0.5rem;
+    }
+    
+    .login-left-side {
+        min-height: 70vh;
+    }
+    
+    .logo {
+        width: 120px;
+    }
+    
+    .welcome-text h1 {
+        font-size: 1.25rem;
+    }
+    
+    .welcome-text p {
+        font-size: 0.8rem;
+    }
+    
+    .logo-container {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+}
+
+/* ✅ LANDSCAPE EN MÓVILES - LAYOUT HORIZONTAL */
+@media (max-width: 1024px) and (orientation: landscape) and (max-height: 600px) {
+    .login-container {
+        flex-direction: row; /* ✅ Volver a layout horizontal */
+    }
+    
+    .login-right-side {
+        width: 50%;
+        height: 100vh;
+        order: 2; /* ✅ Logo a la derecha */
+    }
+    
+    .login-left-side {
+        width: 50%;
+        height: 100vh;
+        order: 1; /* ✅ Form a la izquierda */
+    }
+    
+    .logo {
+        width: 100px;
+    }
+    
+    .welcome-text h1 {
+        font-size: 1.2rem;
+    }
+    
+    .welcome-text p {
+        font-size: 0.8rem;
+    }
+    
+    .logo-container {
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+}
+
+/* ✅ ARREGLAR ZOOM EN iOS */
+@supports (-webkit-touch-callout: none) {
+    /* ✅ Solo para iOS */
+    .login-container {
+        height: 100vh;
+        height: -webkit-fill-available;
     }
 }
